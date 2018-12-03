@@ -14,5 +14,12 @@ contract MyFirstContract {
 	function getName () public view returns(string) {
 	    return name;
 	}
-}
 
+	function setAge (uint newAge) public {
+		age = newAge;
+	}
+
+	function getAge () public view returns(uint) {
+		return age;
+	}
+}
