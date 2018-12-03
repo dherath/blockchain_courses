@@ -1,11 +1,18 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.19;
 
 /**
- * The MyFirstContract contract does this and that...
+ * The MyFirstContract: my first contract
  */
 contract MyFirstContract {
-	function MyFirstContract () {
-		
-	}	
+	string private name;
+	uint private age;
+
+	function setName (string newName) public {
+		name = newName;
+	}
+	
+	function getName () public view returns(string) {
+	    return name;
+	}
 }
 
