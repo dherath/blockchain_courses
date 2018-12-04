@@ -1,10 +1,26 @@
-pragma solidity ^0.4.19;
+pragma solidity ^0.5.1;
 
 /**
  * The Bank contract
  */
 contract Bank {
-	uint internal myInternalValue; // can be accessed by MyFirstContract ~protected
+	uint private value;
+
+	function deposit (uint amount) public {
+		value += amount;
+	}
+
+	function withdraw (uint amount) public {
+		value -= amount;
+	}
+
+	/**
+	* shows the balance in account
+	**/
+	function balance() public view returns(uint) {
+		return value;
+	}
+
 }
 
 
@@ -15,12 +31,11 @@ contract MyFirstContract is Bank{
 	string private name;
 	uint private age;
 
-	function setName (string newName) public {
-		myInternalValue = 1;
+	function setName (string memory newName) public {
 		name = newName;
 	}
 	
-	function getName () public view returns(string) {
+	function getName () public view returns(string memory) {
 	    return name;
 	}
 
