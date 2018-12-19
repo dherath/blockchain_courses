@@ -30,6 +30,27 @@ library Strings {
         return string(_tempBytes);
     }
     
+    /**
+     * finds the position of _value in _base, returns negative value if no match
+     * @param _base : the base string
+     * @param _value : the char value to look for
+     * @return the position
+     **/
+    function strpos (string _base, string _value) internal returns (int) {
+        bytes memory _baseBytes = bytes(_base); // converts _base into bytes
+        bytes memory _valueBytes = bytes(_value);// converts _value to bytes
+        
+        assert(_valueBytes.length == 1);
+        
+        for (uint i=0;i<_baseBytes.length;i++) {
+            if (_baseBytes[i] == _valueBytes[0]) {
+                return int(i);
+            }
+        }
+        
+        return -1;
+    }
+    
     
 }
 
@@ -41,5 +62,9 @@ contract testStrings {
     
     function testconcat(string _base) returns (string) {
         return _base.concat("_suffix");
+    }
+    
+    function teststrpos(string _base) returns (int) {
+        return _base.strpos("t");
     }
 }
